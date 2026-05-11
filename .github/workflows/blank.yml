@@ -1,0 +1,41 @@
+# Basic GitHub Actions Workflow
+
+name: CI
+
+# Events that trigger the workflow
+on:
+  # Run workflow on push to main branch
+  push:
+    branches: [ "main" ]
+
+  # Run workflow on pull request to main branch
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows manual execution from Actions tab
+  workflow_dispatch:
+
+# Jobs to be executed
+jobs:
+
+  # Build job
+  build:
+
+    # Runner environment
+    runs-on: ubuntu-latest
+
+    # Sequence of steps
+    steps:
+
+      # Step 1: Checkout repository code
+      - uses: actions/checkout@v4
+
+      # Step 2: Run single-line command
+      - name: Run a one-line script
+        run: echo "Hello, world!"
+
+      # Step 3: Run multiple commands
+      - name: Run a multi-line script
+        run: |
+          echo "Add other actions to build,"
+          echo "test, and deploy your project."
